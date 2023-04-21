@@ -1,12 +1,16 @@
 package com.employee.view;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.employee.controller.EmpController;
+import com.employee.model.dto.Employee;
 
 public class MainView {
 	private EmpController controller=new EmpController();
 	Scanner sc=new Scanner(System.in);
+	
+	
 	public void mainMenu() {
 		int order=0;
 		while(true) {
@@ -19,6 +23,7 @@ public class MainView {
 			System.out.println("6. 부서 관리");
 			System.out.println("7. 직책 관리");
 			System.out.println("0. 프로그램 종료");
+			System.out.print("번호 입력 : ");
 			order=sc.nextInt();
 			
 			switch(order) {
@@ -33,5 +38,11 @@ public class MainView {
 			default : System.out.println("메뉴에 해당하는 번호를 입력하세요.");
 			}
 		}
+	}
+	
+	public void selectEmpAll(List<Employee> employees) {
+		System.out.println("==========사원 조회============");
+		employees.forEach(e->System.out.println(e));
+		System.out.println("==================================");
 	}
 }
