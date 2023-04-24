@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.employee.common.JDBCTemplate;
 import com.employee.model.dto.Employee;
 
 public class EmpDao {
@@ -38,6 +39,9 @@ public class EmpDao {
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(stmt);
 		}
 		return employees;
 	}
@@ -72,6 +76,9 @@ public class EmpDao {
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
 		}
 		return employees;
 	}
@@ -100,8 +107,11 @@ public class EmpDao {
 			
 			result=pstmt.executeUpdate();
 			
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
 		}
 		return result;
 	}
@@ -139,6 +149,9 @@ public class EmpDao {
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
 		}
 		return 0;
 	}
@@ -153,6 +166,8 @@ public class EmpDao {
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
 		}
 		return result;
 	}
@@ -175,6 +190,8 @@ public class EmpDao {
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
 		}
 		return 0;
 	}
@@ -198,6 +215,8 @@ public class EmpDao {
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
 		}
 		return result;
 	}

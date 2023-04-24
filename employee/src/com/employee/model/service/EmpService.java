@@ -8,6 +8,7 @@ import com.employee.model.dto.Employee;
 
 import static com.employee.common.JDBCTemplate.*;
 
+
 public class EmpService {
 	private EmpDao dao=new EmpDao();
 
@@ -29,6 +30,8 @@ public class EmpService {
 	public int insertEmployee(String id, Employee employee) {
 		Connection conn=getConnection();
 		int result=dao.insertEmployee(conn, id,employee);
+		if(result>0) commit(conn);
+		else rollback(conn);
 		close(conn);
 		return result;
 	}
@@ -36,6 +39,8 @@ public class EmpService {
 	public int searchEmpId(String id) {
 		Connection conn=getConnection();
 		int result=dao.searchEmpId(conn,id);
+		if(result>0) commit(conn);
+		else rollback(conn);
 		close(conn);
 		return result;
 		
@@ -44,6 +49,8 @@ public class EmpService {
 	public int deleteEmployee(String id) {
 		Connection conn=getConnection();
 		int result=dao.deleteEmployee(conn, id);
+		if(result>0) commit(conn);
+		else rollback(conn);
 		close(conn);
 		return result;
 	}
@@ -51,6 +58,8 @@ public class EmpService {
 	public int updateEmployee(String id, Employee employee) {
 		Connection conn=getConnection();
 		int result=dao.updateEmployee(conn,id,employee);
+		if(result>0) commit(conn);
+		else rollback(conn);
 		close(conn);
 		return result;
 	}
@@ -58,6 +67,8 @@ public class EmpService {
 	public int department(int choice) {
 		Connection conn=getConnection();
 		int result=dao.department(conn, choice);
+		if(result>0) commit(conn);
+		else rollback(conn);
 		close(conn);
 		return result;
 	}
